@@ -12,16 +12,16 @@ size_t ByteStream::write(const string& data) {
   }
 
   size_t bytes_written = 0;
-  for (char ch : data) {
-      if (buffer_.size() < capacity_) {
-          buffer_.push_back(ch);
+  for(int i = 0; i < data.length(); i++){
+    if (buffer_.size() < capacity_) {
+          buffer_.push_back(data[i]);
           bytes_written++;
           bytes_written_++;
       } else {
           break; 
       }
   }
-
+  
   return bytes_written;
 }
 
