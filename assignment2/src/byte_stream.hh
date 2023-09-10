@@ -1,4 +1,3 @@
-
 #ifndef SPONGE_LIBSPONGE_BYTE_STREAM_HH
 #define SPONGE_LIBSPONGE_BYTE_STREAM_HH
 
@@ -15,7 +14,7 @@ class ByteStream {
       bool input_ended_;        
       size_t bytes_written_;    
       size_t bytes_read_;       
-      bool _error{};              
+      bool _error;              
 
   public:
       ByteStream(const size_t capa);
