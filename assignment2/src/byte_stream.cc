@@ -43,7 +43,7 @@ string ByteStream::peek_output(const size_t len) const {
 }
 
 void ByteStream::pop_output(const size_t len) {
-  if(len >= capacity_){
+  if(len > capacity_){
     set_error();
     return;
   }
@@ -55,7 +55,7 @@ void ByteStream::pop_output(const size_t len) {
 }
 
 string ByteStream::read(const size_t len) {
-  if(len >= capacity_){
+  if(len > capacity_){
     set_error();
     return;
   }
