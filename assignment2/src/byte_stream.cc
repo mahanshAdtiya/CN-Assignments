@@ -43,6 +43,11 @@ string ByteStream::peek_output(const size_t len) const {
 }
 
 void ByteStream::pop_output(const size_t len) {
+  if(len >= capacity_){
+    set_error();
+    return;
+  }
+
   for (size_t i = 0; i < len && !buffer_.empty(); ++i) {
       buffer_.pop_front();
       bytes_read_++;
@@ -50,6 +55,11 @@ void ByteStream::pop_output(const size_t len) {
 }
 
 string ByteStream::read(const size_t len) {
+  if(len >= capacity_){
+    set_error();
+    return;
+  }
+
   string output = peek_output(len);
   pop_output(len);
   return output;
@@ -67,7 +77,7 @@ bool ByteStream::buffer_empty() const {
   return buffer_.empty();
 }
 
-bool ByteStream::eof() const { // not sure yet
+bool ByteStream::eof() const {
   return input_ended_ && buffer_.empty();
 }
 
